@@ -1,0 +1,13 @@
+#pragma once
+#include <SFML/Graphics.hpp>
+using namespace sf;
+
+namespace GameEvent{
+	class EventManager {
+	public:
+		void pollEvents(RenderWindow* game_window);
+		bool isKeyPressed(sf::Keyboard::Key key);
+
+
+	};
+}

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "../../Header/Core/GameWindowManager.h"
+#include "../../Header/Event/EventManager.h"
 
 int main()
 {
@@ -29,5 +30,8 @@ int main()
     while (gameWindowManager.isGameRunning()) {
         gameWindowManager.render();
     }
+
+    GameEvent::EventManager eventManager;
+
     return 0;
 }
