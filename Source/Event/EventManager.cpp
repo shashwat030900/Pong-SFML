@@ -1,5 +1,6 @@
 #include "../../Header/Event/EventManager.h"
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 namespace GameEvent {
 	void EventManager::pollEvents(RenderWindow* game_window) {
@@ -10,6 +11,10 @@ namespace GameEvent {
 				
 				game_window->close();
 			}
+			if (isLeftMouseButtonClicked()) {
+				sf::Vector2i position = sf::Mouse::getPosition(*game_window);
+				std::cout << "Left mouse click at:" << position.x << "," << position.y << std::endl;
+			}
 		}
 
 	}
@@ -17,4 +22,8 @@ namespace GameEvent {
 		return sf::Keyboard::isKeyPressed(key);
 
 	}
+	bool EventManager::isLeftMouseButtonClicked() {
+		return (sf::Mouse::isButtonPressed(sf::Mouse::Left));
+	}
+
 }

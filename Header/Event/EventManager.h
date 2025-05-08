@@ -8,6 +8,7 @@ namespace GameEvent{
 		void pollEvents(RenderWindow* game_window);
 		bool isKeyPressed(sf::Keyboard::Key key);
 
+		bool isLeftMouseButtonClicked();
 
 	};
 }
