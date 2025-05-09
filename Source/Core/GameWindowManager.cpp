@@ -4,7 +4,7 @@
 namespace Core {
 
     void GameWindowManager::initialize() {
-        game_window = new sf::RenderWindow();
+        game_window = std::make_unique<sf::RenderWindow>();
         createGameWindow();
     }
 
@@ -15,12 +15,20 @@ namespace Core {
     bool GameWindowManager::isGameRunning() {
         return game_window->isOpen();
     }
-    void GameWindowManager::render() {
+    /*void GameWindowManager::render() {
         game_window->clear(sf::Color(200, 50, 50, 255));
         game_window->display();
+    }*/
+    sf::RenderWindow* GameWindowManager::getGameWindow() {
+        return game_window.get(); 
     }
-    RenderWindow* GameWindowManager::getGameWindow() {
-        return game_window;
+    void GameWindowManager::clearGameWindow() {
+        game_window->clear();
+
     }
+    void GameWindowManager::displayGameWindow() {
+        game_window->display();
+    }
+
 
 }

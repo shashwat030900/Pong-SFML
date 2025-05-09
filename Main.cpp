@@ -2,6 +2,10 @@
 #include <SFML/Graphics.hpp>
 #include "../../Header/Core/GameWindowManager.h"
 #include "../../Header/Event/EventManager.h"
+#include "../../Header/Core/GameLoop.h"
+
+using namespace Core;
+
 
 int main()
 {
@@ -23,15 +27,20 @@ int main()
         window.display();
     }*/
 
+    GameLoop* game_loop_manager = new GameLoop();
+    game_loop_manager->initialize();
+
     Core::GameWindowManager gameWindowManager;
 
     gameWindowManager.initialize();
 
     while (gameWindowManager.isGameRunning()) {
-        gameWindowManager.render();
+        game_loop_manager->pollEvents();
+        game_loop_manager->update();
+        game_loop_manager->render();
     }
 
-    GameEvent::EventManager eventManager;
+    
 
     return 0;
 }

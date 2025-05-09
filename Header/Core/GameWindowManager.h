@@ -10,9 +10,10 @@ namespace Core {
 		int game_window_height = 1080;
 		string game_title = "Shashwat's_SFML-Pong!";
 		
-		sf::RenderWindow* game_window;
+		std::unique_ptr<sf::RenderWindow> game_window;
 		void createGameWindow();
-
+		void clearGameWindow();
+		void displayGameWindow();
 		
 
 	public:
@@ -21,7 +22,7 @@ namespace Core {
 		
 		sf::RenderWindow* getGameWindow();
 		bool isGameRunning();
-		void render();
+		//void render();
 
 		
 
