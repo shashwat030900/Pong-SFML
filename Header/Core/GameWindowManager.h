@@ -11,18 +11,18 @@ namespace Core {
 		string game_title = "Shashwat's_SFML-Pong!";
 		
 		std::unique_ptr<sf::RenderWindow> game_window;
-		void createGameWindow();
-		void clearGameWindow();
-		void displayGameWindow();
+		
 		
 
 	public:
 		void initialize();
-
+		void createGameWindow();
+		void clearGameWindow();
+		void displayGameWindow();
 		
 		sf::RenderWindow* getGameWindow();
 		bool isGameRunning();
-		//void render();
+		void render();
 
 		
 

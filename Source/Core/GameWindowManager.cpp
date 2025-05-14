@@ -23,12 +23,14 @@ namespace Core {
         return game_window.get(); 
     }
     void GameWindowManager::clearGameWindow() {
-        game_window->clear();
+        return game_window->clear();
 
     }
     void GameWindowManager::displayGameWindow() {
-        game_window->display();
+        return game_window->display();
     }
+    void GameWindowManager::render() {
 
+    }
 
 }
