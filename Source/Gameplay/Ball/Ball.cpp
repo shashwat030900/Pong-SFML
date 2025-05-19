@@ -11,3 +11,7 @@ Ball::Ball() {
 void Ball::render(sf::RenderWindow* game_window) {
 	game_window->draw(ball_sprite);
 }
+
+void Ball::update() {
+	
+}

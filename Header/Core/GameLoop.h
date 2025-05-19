@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "../../Header/Core/GameWindowManager.h"
 #include "../../Header/Event/EventManager.h"
-#include "../../Source/Gameplay/GameplayManager.cpp"
+#include "../../Header/Gameplay/GameplayManager.h"
 
 
 
@@ -17,7 +17,7 @@ namespace Core {
 
 		GameWindowManager* game_window_manager;
 		EventManager* eventManager;
-		GameplayManager* gameplay_manager;
+		Gameplay::GameplayManager* gameplay_manager;
 
 
 	public:

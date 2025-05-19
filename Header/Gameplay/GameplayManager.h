@@ -2,29 +2,23 @@
 #include <SFML/Graphics.hpp>
 #include "../../Header/Gameplay/Paddle/Paddle.h"
 #include "../../Header/Gameplay/Ball/Ball.h"
-
 namespace Gameplay {
+    class GameplayManager {
+    private:
+        float player1_position_x = 40.0f;
+        float player1_position_y = 300.0f;
+        float player2_position_x = 1210.0f;
+        float player2_position_y = 300.0f;
 
-	class GameplayManager {
+        Ball* ball;
+        Paddle* player1;
+        Paddle* player2;
 
-	private:
-		float player1_position_x = 40.0f;
-		float player1_position_y = 300.0f;
+        void initialize();
 
-		float player2_position_x = 1210.0f;
-		float player2_position_y = 300.0f;
-
-		Ball* ball;
-		Paddle* player1;
-		Paddle* player2;
-
-		void initialize();
-
-	public:
-		GameplayManager();
-		void update();
-		void render(sf::RenderWindow* game_window);
-
-
-	};
+    public:
+        GameplayManager();
+        void update();
+        void render(sf::RenderWindow* game_window);
+    };
 }
