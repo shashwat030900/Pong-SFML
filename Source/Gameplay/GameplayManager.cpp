@@ -2,8 +2,10 @@
 #include "../../Header/Gameplay/GameplayManager.h"
 
 using namespace Gameplay;
+using namespace sf;
 
-GameplayManager::GameplayManager() {
+GameplayManager::GameplayManager(GameEvent::EventManager* manager) {
+    event_manager = manager;
     initialize();
 }
 
@@ -20,7 +22,7 @@ void GameplayManager::render(sf::RenderWindow* game_window) {
 }
 
 void GameplayManager::update() {
+    player1->update(event_manager->isKeyPressed(Keyboard::W), event_manager->isKeyPressed(Keyboard::S));
+    player2->update(event_manager->isKeyPressed(Keyboard::Up), event_manager->isKeyPressed(Keyboard::Down));
     ball->update();
-    player1->update();
-    player2->update();
 }

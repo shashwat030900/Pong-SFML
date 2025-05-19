@@ -30,11 +30,9 @@ int main()
     GameLoop* game_loop_manager = new GameLoop();
     game_loop_manager->initialize();
 
-    Core::GameWindowManager gameWindowManager;
+    
 
-    gameWindowManager.initialize();
-
-    while (gameWindowManager.isGameRunning()) {
+    while (game_loop_manager->isGameRunning()) {
         game_loop_manager->pollEvents();
         game_loop_manager->update();
         game_loop_manager->render();

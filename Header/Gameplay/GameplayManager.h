@@ -2,6 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include "../../Header/Gameplay/Paddle/Paddle.h"
 #include "../../Header/Gameplay/Ball/Ball.h"
+#include "../../Header/Event/EventManager.h"
+
 namespace Gameplay {
     class GameplayManager {
     private:
@@ -10,6 +12,8 @@ namespace Gameplay {
         float player2_position_x = 1896.0f;
         float player2_position_y = 581.0f;
 
+        GameEvent::EventManager* event_manager;
+
         Ball* ball;
         Paddle* player1;
         Paddle* player2;
@@ -17,7 +21,7 @@ namespace Gameplay {
         void initialize();
 
     public:
-        GameplayManager();
+        GameplayManager(GameEvent::EventManager* manager);
         void update();
         void render(sf::RenderWindow* game_window);
     };

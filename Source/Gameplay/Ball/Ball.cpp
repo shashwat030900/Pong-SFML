@@ -13,7 +13,7 @@ void Ball::render(sf::RenderWindow* game_window) {
 }
 
 void Ball::update() {
-	
+	move();
 }
 void Ball::loadTexture() {
 	if (!pong_ball_texture.loadFromFile(texture_path)) {
@@ -25,3 +25,7 @@ void Ball::initializeVariables() {
 	pong_ball_sprite.setScale(scale_x, scale_y);
 	pong_ball_sprite.setPosition(position_x, position_y);
 }
+void Ball::move() {
+
+}
+
