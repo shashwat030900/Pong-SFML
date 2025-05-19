@@ -3,6 +3,7 @@
 #include "../../Header/Gameplay/Paddle/Paddle.h"
 #include "../../Header/Gameplay/Ball/Ball.h"
 #include "../../Header/Event/EventManager.h"
+#include "../../Header/Gameplay/Boundary/Boundary.h"
 
 namespace Gameplay {
     class GameplayManager {
@@ -19,6 +20,7 @@ namespace Gameplay {
         Paddle* player2;
 
         void initialize();
+        Boundary* boundary;
 
     public:
         GameplayManager(GameEvent::EventManager* manager);
