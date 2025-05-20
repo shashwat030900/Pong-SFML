@@ -7,17 +7,22 @@ namespace Gameplay {
 
 	private:
 
+		const float WINDOW_WIDTH = 1920.f;
+		const float WINDOW_HEIGHT = 1080.f;
+		const float BOUNDARY_THICKNESS = 10.f;
+		const float CENTER_LINE_WIDTH = 4.f;
+
 		sf::RectangleShape topBoundary;
 		sf::RectangleShape leftBoundary;
 		sf::RectangleShape bottomBoundary;
 		sf::RectangleShape rightBoundary;
 		sf::RectangleShape centerLine;
 
-		const float horizontal_boundary_width = 1920.0f;
+		//const float horizontal_boundary_width = 1920.0f;
 		const float horizontal_boundary_height = 20.0f;
 
 		const float verticle_boundary_width = 20.0f;
-		const float verticle_boundary_height = 1080.0f;
+		//const float verticle_boundary_height = 1080.0f;
 
 		const float top_position_x = 0.0f;
 		const float top_position_y = 0.0f;

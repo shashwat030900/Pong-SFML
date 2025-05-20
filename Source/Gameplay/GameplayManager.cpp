@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "../../Header/Gameplay/GameplayManager.h"
 #include "../../Header/Gameplay/Boundary/Boundary.h"
+#include "../../Header/Gameplay/Paddle/Paddle.h"
 
 
 using namespace Gameplay;
@@ -29,5 +30,5 @@ void GameplayManager::render(sf::RenderWindow* game_window) {
 void GameplayManager::update() {
     player1->update(event_manager->isKeyPressed(Keyboard::W), event_manager->isKeyPressed(Keyboard::S));
     player2->update(event_manager->isKeyPressed(Keyboard::Up), event_manager->isKeyPressed(Keyboard::Down));
-    ball->update();
+    ball->update( player1, player2);
 }
