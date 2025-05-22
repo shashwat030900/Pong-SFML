@@ -29,11 +29,13 @@ namespace UI {
 
 		void loadFontTexture();
 		void createLeftScoreText();
+		
+		
+	public:
+		void render(RenderWindow* gamewindow);
 		void incrementPlayer2Score();
 		void incrementPlayer1Score();
 		void update();
-	public:
-		void render(RenderWindow* gamewindow);
 	};
 
 }

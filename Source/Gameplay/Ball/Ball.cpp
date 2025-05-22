@@ -63,9 +63,11 @@ void Ball::handleBoundaryCollision() {
 void Ball::handleOutofBoundCollision() {
 	FloatRect ball_bounds = pong_ball_sprite.getGlobalBounds();
 	if (ball_bounds.left <= left_boundary) {
+		updateLeftCollisonState(true);
 		reset();
 	}
 	else if (ball_bounds.left + ball_bounds.width >= right_boundary) {
+		updateRightCollisonState(true);
 		reset();
 	}
 }
@@ -110,5 +112,24 @@ void Ball::updateDelayTime(float deltaTime) {
 			return;
 		}
 	}
+}
+bool Ball::isLeftCollisonOccured() {
+	return had_left_collison;
+}
+void Ball::updateLeftCollisonState(bool value) {
+
+	had_left_collison = value;
+
+}
+
+bool Ball::isRightCollisonOccured() {
+
+	return had_right_collison;
+
+}
+void Ball::updateRightCollisonState(bool value) {
+
+	had_right_collison = value;
+
 }
 

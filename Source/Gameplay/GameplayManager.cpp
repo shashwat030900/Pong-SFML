@@ -32,6 +32,7 @@ void GameplayManager::render(sf::RenderWindow* game_window) {
     player1->render(game_window);
     player2->render(game_window);
     ui_service->render(game_window);  
+    ui_service->render(game_window);
 }
 
 void GameplayManager::update() {
@@ -41,4 +42,31 @@ void GameplayManager::update() {
     player1->update(event_manager->isKeyPressed(Keyboard::W), event_manager->isKeyPressed(Keyboard::S));
     player2->update(event_manager->isKeyPressed(Keyboard::Up), event_manager->isKeyPressed(Keyboard::Down));
     ball->update(player1, player2, time_service);
+    UpdateScore();
+    ui_service->update();
+}
+void Gameplay::GameplayManager::UpdateScore() {
+
+    if (ball->isLeftCollisonOccured()) {
+
+        ui_service->incrementPlayer2Score();
+        ball->updateLeftCollisonState(false);
+        resetPlayers();
+
+    }
+
+    if (ball->isRightCollisonOccured()) {
+
+        ui_service->incrementPlayer1Score();
+        ball->updateRightCollisonState(false);
+        resetPlayers();
+
+    }
+
+}
+void Gameplay::GameplayManager::resetPlayers() {
+
+    player1->reset(player1_position_x, player1_position_y);
+    player2->reset(player2_position_x, player2_position_y);
+
 }

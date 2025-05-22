@@ -24,6 +24,8 @@ namespace Gameplay {
 
         void initialize();
         Boundary* boundary;
+        void UpdateScore();
+        void resetPlayers();
 
     public:
         GameplayManager(GameEvent::EventManager* manager);

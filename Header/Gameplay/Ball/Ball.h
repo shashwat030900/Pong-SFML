@@ -58,9 +58,21 @@ namespace Gameplay {
 		void onCollision(Paddle* player1, Paddle* player2);
 		void updateDelayTime(float deltaTime);
 
+		//Collisions
+		bool had_left_collison = false;
+		bool had_right_collison = false;
+
+
 	public:
 		Ball();
+		bool isLeftCollisonOccured();
+		void updateLeftCollisonState(bool value);
+		
+		bool isRightCollisonOccured();
+		void updateRightCollisonState(bool value);
+
 		void update(Paddle* player1, Paddle* player2, Utility::TimeService* time_service);
 		void render(sf::RenderWindow* game_window);
+
 	};
 }
