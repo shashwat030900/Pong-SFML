@@ -6,7 +6,6 @@
 
 
 
-using namespace Core;
 using namespace GameEvent;
 
 namespace Core {

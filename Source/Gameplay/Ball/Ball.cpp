@@ -2,9 +2,11 @@
 #include "../../Header/Gameplay/Ball/Ball.h"
 #include "../../Header/Utility/TimeService.h"
 #include "../../../Header/Gameplay/GameplayManager.h"
+#include "../../Header/Sound/SoundManager.h"
 
 using namespace Gameplay;
 using namespace sf;
+using namespace Sound;
 
 
 
@@ -42,7 +44,9 @@ void Ball::handlePaddleCollision(Paddle* player1, Paddle* player2) {
 	sf::FloatRect player2_bounds = player2Paddle.getGlobalBounds();
 
 	if (ball_bounds.intersects(player1_bounds) && velocity.x < 0) {
+
 		velocity.x = -velocity.x;
+		SoundManager::PlaySoundEffects(SoundType::BALL_BOUNCE);
 	}
 	if (ball_bounds.intersects(player2_bounds) && velocity.x > 0) {
 		velocity.x = -velocity.x;
@@ -52,10 +56,10 @@ void Ball::handlePaddleCollision(Paddle* player1, Paddle* player2) {
 void Ball::handleBoundaryCollision() {
     FloatRect ball_bounds = pong_ball_sprite.getGlobalBounds();
 
-    if ((ball_bounds.top <= top_boundary && velocity.y < 0) ||
-        (ball_bounds.top + ball_bounds.height >= bottom_boundary && velocity.y > 0)) 
+    if (ball_bounds.top <= top_boundary || ball_bounds.top + ball_bounds.height >= bottom_boundary)
     {
         velocity.y = -velocity.y;
+		SoundManager::PlaySoundEffects(SoundType::BALL_BOUNCE);
     }
 }
 
