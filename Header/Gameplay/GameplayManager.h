@@ -5,6 +5,7 @@
 #include "../../Header/Event/EventManager.h"
 #include "../../Header/Gameplay/Boundary/Boundary.h"
 #include "../../Header/Utility/TimeService.h"
+#include "../../Header/UI/UIService.h"
 
 namespace Gameplay {
     class GameplayManager {
@@ -14,7 +15,7 @@ namespace Gameplay {
         float player1_position_y = 581.0f;
         float player2_position_x = 1896.0f;
         float player2_position_y = 581.0f;
-
+        UI::UIService* ui_service;
         GameEvent::EventManager* event_manager;
 
         Ball* ball;
