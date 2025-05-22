@@ -5,11 +5,22 @@
 using namespace sf;
 using namespace std;
 
+enum class BallState {
+
+	Idle,
+	Moving
+
+};
+
+
 namespace Gameplay {
 
 	class Ball {
 	private:
+
+		
 		// Constants
+		const int speed_multiplier = 10;
 		const float ball_speed = 0.5f;
 		const string texture_path = "Assets/Textures/Ball.png";
 		const float scale_x = 0.06f;
@@ -30,19 +41,26 @@ namespace Gameplay {
 		const float top_boundary = 0.f;
 		const float bottom_boundary = 1080.f;
 
+		//TimeDelay
+
+		float delay_duration = 2.0f;
+		float elapsed_delay_time = 0.0f;
+
 		// Core methods
+		BallState current_state;
 		void loadTexture();
 		void initializeVariables();
-		void move();
+		void move(Utility::TimeService* time_service);
 		void reset();
 		void handlePaddleCollision(Paddle* player1, Paddle* player2);
 		void handleBoundaryCollision();
 		void handleOutofBoundCollision();
 		void onCollision(Paddle* player1, Paddle* player2);
+		void updateDelayTime(float deltaTime);
 
 	public:
 		Ball();
-		void update(Paddle* player1, Paddle* player2);
+		void update(Paddle* player1, Paddle* player2, Utility::TimeService* time_service);
 		void render(sf::RenderWindow* game_window);
 	};
 }

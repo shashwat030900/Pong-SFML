@@ -4,10 +4,12 @@
 #include "../../Header/Gameplay/Ball/Ball.h"
 #include "../../Header/Event/EventManager.h"
 #include "../../Header/Gameplay/Boundary/Boundary.h"
+#include "../../Header/Utility/TimeService.h"
 
 namespace Gameplay {
     class GameplayManager {
     private:
+        Utility::TimeService* time_service;
         float player1_position_x = 4.0f;
         float player1_position_y = 581.0f;
         float player2_position_x = 1896.0f;

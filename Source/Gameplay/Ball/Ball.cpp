@@ -1,8 +1,13 @@
 #include <SFML/Graphics.hpp>
 #include "../../Header/Gameplay/Ball/Ball.h"
+#include "../../Header/Utility/TimeService.h"
+#include "../../../Header/Gameplay/GameplayManager.h"
 
 using namespace Gameplay;
 using namespace sf;
+
+
+
 Ball::Ball()
 	: velocity(ball_speed, ball_speed) {
 	loadTexture();
@@ -23,10 +28,11 @@ void Ball::initializeVariables() {
 	pong_ball_sprite.setScale(scale_x, scale_y);
 	sf::FloatRect bounds = pong_ball_sprite.getGlobalBounds();
 	pong_ball_sprite.setPosition((window_width - bounds.width) / 2.f, (window_height - bounds.height) / 2.f);
+	current_state = BallState::Idle;
 }
-void Ball::move() {
-
-}
+///void Ball::move() {
+//	pong_ball_sprite.move(velocity);
+//}
 void Ball::handlePaddleCollision(Paddle* player1, Paddle* player2) {
 	const RectangleShape& player1Paddle = player1->getPaddleSprite();
 	const RectangleShape& player2Paddle = player2->getPaddleSprite();
@@ -69,14 +75,40 @@ void Ball::reset() {
 	pong_ball_sprite.setPosition((window_width - bounds.width) / 2.f, (window_height - bounds.height) / 2.f);
 	velocity = Vector2f(ball_speed, ball_speed);  
 }
-void Ball::update(Paddle* player1, Paddle* player2) {
-	
-	move();
+void Ball::update(Paddle* player1, Paddle* player2, Utility::TimeService* time_service) {
+	move(time_service);
 	onCollision(player1, player2);
 }
+
 void Ball::onCollision(Paddle* player1, Paddle* player2) {
 	handleBoundaryCollision();
 	handlePaddleCollision(player1, player2);
 	handleOutofBoundCollision();
 
 }
+
+void Ball::move(Utility::TimeService* time_service) {
+	updateDelayTime(time_service->getDeltaTime());
+
+	float deltaTime = time_service->getDeltaTime();
+
+	sf::Vector2f scaled_velocity(
+		velocity.x * speed_multiplier * deltaTime,
+		velocity.y * speed_multiplier * deltaTime
+	);
+	pong_ball_sprite.move(scaled_velocity);
+}
+void Ball::updateDelayTime(float deltaTime) {
+
+	if (current_state == BallState::Idle) {
+
+		elapsed_delay_time += deltaTime;
+		if (elapsed_delay_time >= delay_duration) {
+			current_state = BallState::Moving;
+		}
+		else {
+			return;
+		}
+	}
+}
+

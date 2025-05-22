@@ -34,3 +34,7 @@ void TimeService::update() {
 	updateDeltaTime();
 
 }
+float TimeService::getDeltaTime() {
+
+	return delta_time;
+}
