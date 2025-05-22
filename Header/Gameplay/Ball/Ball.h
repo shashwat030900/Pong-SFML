@@ -20,7 +20,7 @@ namespace Gameplay {
 
 		
 		// Constants
-		const int speed_multiplier = 10;
+		const int speed_multiplier = 2000;
 		const float ball_speed = 0.5f;
 		const string texture_path = "Assets/Textures/Ball.png";
 		const float scale_x = 0.06f;
