@@ -19,7 +19,6 @@ namespace Sound {
 		static const std::string bgmPath;
 		static const std::string ballBouncePath;
 
-		
 		static void LoadSoundFromFile();
 
 	public:
@@ -28,4 +27,3 @@ namespace Sound {
 		static void PlayBackgroundMusic();
 	};
 }
-

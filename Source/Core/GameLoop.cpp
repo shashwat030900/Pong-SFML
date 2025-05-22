@@ -12,6 +12,7 @@ using namespace Sound;
 		SoundManager::Initialize();
 		game_window_manager->initialize();
 		gameplay_manager = new Gameplay::GameplayManager(eventManager);
+		SoundManager::PlayBackgroundMusic();
 		
 	}
 	bool GameLoop::isGameRunning() {
@@ -32,3 +33,4 @@ using namespace Sound;
 		game_window_manager->displayGameWindow();
 
 	}
+	
