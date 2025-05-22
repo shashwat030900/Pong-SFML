@@ -19,8 +19,8 @@ namespace UI {
 		std::string initial_string = "00";
 		std::string formatScore(int score);
 
-		float left_score_postion_x = 570.0f * 1.5f;
-		float left_score_postion_y = 30.0f * 1.5f;
+		float left_score_position_x = 570.0f * 1.5f;
+		float left_score_position_y = 30.0f * 1.5f;
 		float right_score_position_x = 670.0f * 1.5f;
 		float right_score_position_y = 30.0f * 1.5f;
 
@@ -29,6 +29,7 @@ namespace UI {
 
 		void loadFontTexture();
 		void createLeftScoreText();
+		void createRightScoreText();
 		
 		
 	public:
@@ -36,6 +37,8 @@ namespace UI {
 		void incrementPlayer2Score();
 		void incrementPlayer1Score();
 		void update();
+		UIService();
+
 	};
 
 }
